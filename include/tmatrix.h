@@ -83,24 +83,26 @@ public:
 
   // индексация
   T& operator[](size_t ind) {
-
+      if (ind >= sz )
+          throw out_of_range(" ");
       return pMem[ind];
   }
   const T& operator[](size_t ind) const
   {
-
+      if (ind >= sz)
+          throw out_of_range(" ");
       return pMem[ind];
   }
   // индексация с контролем
   T& at(size_t ind)
   { 
-      if (ind >= sz)
+      if (ind >= sz )
           throw out_of_range(" ");
       return pMem[ind];
   }
   const T& at(size_t ind) const
   {
-      if (ind >= sz)
+      if (ind >= sz )
           throw out_of_range(" ");
       return pMem[ind];
   }
@@ -264,7 +266,9 @@ public:
         }
         return tmp;
     }
-
+    size_t size() const noexcept {
+        return sz;
+    }
 
     TDynamicMatrix operator*(const TDynamicMatrix& m)
     {
